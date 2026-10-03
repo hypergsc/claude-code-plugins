@@ -1,7 +1,7 @@
 {
   "name": "hypergsc",
-  "version": "0.1.1",
-  "description": "Analyze Search Console data, find CTR opportunities, and check indexing with HyperGSC.",
+  "version": "0.2.0",
+  "description": "Analyze Search Console performance, plan content, research competitors and backlinks, and evaluate recorded SEO changes with HyperGSC.",
   "author": {
     "name": "HyperGSC",
     "url": "https://hypergsc.com",

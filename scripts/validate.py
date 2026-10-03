@@ -9,7 +9,15 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "plugins/hypergsc"
-SKILLS = {"search-review", "ctr-opportunities", "indexing-check"}
+SKILLS = {
+    "search-review",
+    "ctr-opportunities",
+    "indexing-check",
+    "content-planning",
+    "competitor-research",
+    "change-evaluation",
+    "backlink-gap",
+}
 
 
 def require(condition, message):
