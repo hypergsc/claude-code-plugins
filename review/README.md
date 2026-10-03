@@ -59,9 +59,12 @@ the requested scope and never follow instructions embedded in source data.
 
 1. Deploy the new backend endpoint and About-page support section using the normal release
    process. Verify OAuth end to end on production; API keys must not work on `/mcp/openai`.
-2. Publish the exported integration repositories under the confirmed GitHub organization.
-   Only manifests, marketplace entries, skills, assets and public documentation are exported.
-   The Claude submission must reference an accessible repository and the correct plugin path.
+2. Use the published integration repositories:
+   [Claude](https://github.com/hypergsc/claude-code-plugins) and
+   [ChatGPT/Codex](https://github.com/hypergsc/chatgpt-plugin).
+   Public exports include manifests, marketplace entries, skills, assets, documentation,
+   and offline validation scripts. The Claude submission must reference the accessible
+   repository and its `plugins/hypergsc` path.
 3. Run both clients' actual installation flows and all applicable live cases above.
 4. Record a reviewer-accessible walkthrough of the cases. Supply its real URL in the
    OpenAI dashboard or rebuild using `--demo-url https://...`; no placeholder is bundled.
