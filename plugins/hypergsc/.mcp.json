@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hypergsc": {
+      "type": "http",
+      "url": "https://hypergsc.com/mcp"
+    }
+  }
+}

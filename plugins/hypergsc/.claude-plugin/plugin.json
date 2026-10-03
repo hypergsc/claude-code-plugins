@@ -1,0 +1,22 @@
+{
+  "name": "hypergsc",
+  "version": "0.1.1",
+  "description": "Analyze Search Console data, find CTR opportunities, and check indexing with HyperGSC.",
+  "author": {
+    "name": "HyperGSC",
+    "url": "https://hypergsc.com",
+    "email": "help@hypergsc.com"
+  },
+  "homepage": "https://hypergsc.com",
+  "repository": "https://github.com/hypergsc/claude-code-plugins",
+  "keywords": [
+    "seo",
+    "search-console",
+    "analytics"
+  ],
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://hypergsc.com/agent-setup/prompt.md",
+  "supportUrl": "https://hypergsc.com/about#support",
+  "privacyPolicyUrl": "https://hypergsc.com/privacy",
+  "termsOfServiceUrl": "https://hypergsc.com/tos"
+}
