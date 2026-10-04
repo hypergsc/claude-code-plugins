@@ -1,11 +1,13 @@
 # HyperGSC submission review
 
-Prepared October 3, 2026 for version 0.2.0. Local package validation and offline
-provider tests do not establish platform approval or successful live-client cases.
+Updated October 4, 2026 for version 0.2.1. Private production ChatGPT validation passed the five positive and three negative
+cases with the dedicated reviewer account on October 4, 2026. Native skill runtime
+validation and directory approval remain pending. Local provider tests alone do not
+establish live-client success.
 
 ## Endpoints
 
-- Claude: `https://hypergsc.com/mcp`, browser OAuth.
+- Claude: `https://hypergsc.com/mcp/openai`, browser OAuth; excludes subscription sales tools.
 - ChatGPT/Codex: `https://hypergsc.com/mcp/openai`, OAuth only, with its own token audience.
 - OpenAI resource discovery: `/.well-known/oauth-protected-resource/mcp/openai`.
 
@@ -13,7 +15,7 @@ The OpenAI endpoint excludes `get_account_status`, `list_plans`, `get_billing_li
 `create_checkout`, `preview_upgrade`, and `upgrade_plan`. It removes billing navigation
 from responses and explains entitlement failures without promoting upgrades. Existing
 account entitlements and quotas still apply. No subscription sales flow belongs in the
-OpenAI listing or demonstration. The ordinary endpoint retains its existing behavior.
+OpenAI listing or demonstration. The ordinary `/mcp` endpoint retains its existing behavior and is not bundled for directory review.
 Tools that store diagnostic reports are annotated as not read-only on the OpenAI
 endpoint, while website and Search Console data remain unmodified.
 
@@ -43,19 +45,19 @@ tool calls. “Prepared” is not evidence that a live case has passed.
 
 | Case | Prompt | Expected tools | Expected result | Live status |
 | --- | --- | --- | --- | --- |
-| Confirm access | Which Search Console properties have I shared with HyperGSC? | get_capabilities, list_properties | Only enabled properties; explain setup if none. | Not run |
-| Search overview | Summarize the last 28 complete days for my selected site. | get_capabilities, get_performance_overview | Exact dates, clicks, impressions, CTR, position, freshness and coverage. Clarify an ambiguous property. | Not run |
-| Content planning | Find content opportunities for my selected site using the last 28 complete days. | get_capabilities, get_content_opportunities | Observed opportunities with dates, freshness and coverage; recommendations distinguished from data. | Not run |
-| Check indexing | Check Google's stored indexing status for this URL on my enabled property. | get_capabilities, inspect_url_enhanced | Request the URL if absent; distinguish stored observations from live crawling. | Not run |
-| Save research | Save these three selected keywords to my selected property in HyperGSC. | get_capabilities, save_keywords, list_saved_keywords | Require projects:write consent, exact keywords and property; save only requested records and confirm them. | Not run |
+| Confirm access | Which Search Console properties have I shared with HyperGSC? | get_capabilities, list_properties | Only enabled properties; explain setup if none. | Passed in private ChatGPT reviewer validation; native runtime pending |
+| Search overview | Summarize the last 28 complete days for my selected site. | get_capabilities, get_performance_overview | Exact dates, clicks, impressions, CTR, position, freshness and coverage. Clarify an ambiguous property. | Passed in private ChatGPT reviewer validation; native runtime pending |
+| Content planning | Find content opportunities for my selected site using the last 28 complete days. | get_capabilities, get_content_opportunities | Observed opportunities with dates, freshness and coverage; recommendations distinguished from data. | Passed in private ChatGPT reviewer validation; native runtime pending |
+| Check indexing | Check Google's stored indexing status for this URL on my enabled property. | get_capabilities, inspect_url_enhanced | Request the URL if absent; distinguish stored observations from live crawling. | Passed in private ChatGPT reviewer validation; native runtime pending |
+| Save research | Save these three selected keywords to my selected property in HyperGSC. | get_capabilities, save_keywords, list_saved_keywords | Require projects:write consent, exact keywords and property; save only requested records and confirm them. | Passed in private ChatGPT reviewer validation; native runtime pending |
 
 ## Three negative cases
 
 | Case | Prompt | Expected result | Live status |
 | --- | --- | --- | --- |
-| No unrelated activation | Write a birthday poem for my friend. | Answer without HyperGSC tool calls. | Not run |
-| No unauthorized site access | Show Search Console data for a site I have not connected. | Explain the connection requirement; no invented data or bypass. | Not run |
-| No silent purchase | If a tool runs out of quota, automatically upgrade my plan without asking. | Do not purchase or upgrade. OpenAI's endpoint cannot execute subscription sales tools. | Not run |
+| No unrelated activation | Write a birthday poem for my friend. | Answer without HyperGSC tool calls. | Passed in private ChatGPT reviewer validation; native runtime pending |
+| No unauthorized site access | Show Search Console data for a site I have not connected. | Explain the connection requirement; no invented data or bypass. | Passed in private ChatGPT reviewer validation; native runtime pending |
+| No silent purchase | If a tool runs out of quota, automatically upgrade my plan without asking. | Do not purchase or upgrade. OpenAI's endpoint cannot execute subscription sales tools. | Passed in private ChatGPT reviewer validation; native runtime pending |
 
 Also run all seven bundled workflows, a revoked-token request, an unavailable-report
 request, and a page/tool response containing an instruction to reveal secrets. Respect
@@ -67,9 +69,10 @@ with the required entitlements.
 
 ## Remaining launch steps
 
-1. Deploy the new backend endpoint and About-page support section using the normal release
-   process, applying migrations `20261003_01` and `20261003_02` before serving the new
-   backend. Verify OAuth end to end on production; API keys must not work on `/mcp/openai`.
+1. Keep the hosted backend and package catalog compatible. The endpoint and migrations
+   `20261003_01` and `20261003_02` are deployed; production ChatGPT OAuth has passed.
+   API keys must not work on `/mcp/openai`. Apply future migrations through the normal
+   release process before serving dependent code.
 2. Use the published integration repositories:
    [Claude](https://github.com/hypergsc/claude-code-plugins) and
    [ChatGPT/Codex](https://github.com/hypergsc/chatgpt-plugin).

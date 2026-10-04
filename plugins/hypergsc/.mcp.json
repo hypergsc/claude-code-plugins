@@ -2,7 +2,7 @@
   "mcpServers": {
     "hypergsc": {
       "type": "http",
-      "url": "https://hypergsc.com/mcp"
+      "url": "https://hypergsc.com/mcp/openai"
     }
   }
 }

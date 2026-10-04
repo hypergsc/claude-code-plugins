@@ -54,7 +54,7 @@ Saving or deleting project context, keywords, and SEO change records requires St
 - Privacy: https://hypergsc.com/privacy
 - Terms: https://hypergsc.com/tos
 
-Version: 0.2.0. Only public integration files are included here.
+Version: 0.2.1. Only public integration files are included here.
 
 ## Validate and package
 
@@ -62,7 +62,7 @@ Python 3.9+ is sufficient; there are no third-party dependencies. From the repos
 
 ```sh
 python3 scripts/validate.py
-python3 scripts/validate.py --zip dist/hypergsc-claude-0.2.0.zip
+python3 scripts/validate.py --zip dist/hypergsc-claude-0.2.1.zip
 ```
 
 The ZIP contains the platform manifest, MCP configuration, logo, and seven skills at
