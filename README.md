@@ -34,6 +34,7 @@ Publishing this GitHub repository does not establish platform approval.
 - **competitor-research:** review domain estimates, top pages, and keyword gaps.
 - **change-evaluation:** record applied changes and compare complete before/after GSC windows.
 - **backlink-gap:** compare bounded referring-domain samples with explicit competitors.
+- **domain-comparison:** compare Ahrefs DR, backlink totals, estimated traffic and top pages.
 
 Example: “Use HyperGSC to review my latest complete week of search performance.”
 If several properties are enabled, the agent asks which one to use.
@@ -45,7 +46,7 @@ Missing data is unknown; results disclose dates, freshness, filters, and coverag
 
 Use browser OAuth. Never paste passwords, API keys, or tokens into chat.
 Revoke client access from your HyperGSC dashboard when needed.
-Saving or deleting project context, keywords, and SEO change records requires Starter+ and optional
+Saving or deleting keywords and SEO change records requires Starter+ and optional
 `projects:write` consent alongside `gsc:read`. Existing API keys remain read-only.
 
 - Website: https://hypergsc.com
@@ -54,7 +55,7 @@ Saving or deleting project context, keywords, and SEO change records requires St
 - Privacy: https://hypergsc.com/privacy
 - Terms: https://hypergsc.com/tos
 
-Version: 0.2.1. Only public integration files are included here.
+Version: 0.2.4. Only public integration files are included here.
 
 ## Validate and package
 
@@ -62,10 +63,10 @@ Python 3.9+ is sufficient; there are no third-party dependencies. From the repos
 
 ```sh
 python3 scripts/validate.py
-python3 scripts/validate.py --zip dist/hypergsc-claude-0.2.1.zip
+python3 scripts/validate.py --zip dist/hypergsc-claude-0.2.4.zip
 ```
 
-The ZIP contains the platform manifest, MCP configuration, logo, and seven skills at
+The ZIP contains the platform manifest, MCP configuration, logo, and eight skills at
 the plugin root. Local checks run in GitHub Actions and do not connect to your account.
 See [review preparation and live cases](review/README.md) before submitting to a directory.
 

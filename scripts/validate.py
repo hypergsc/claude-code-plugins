@@ -17,6 +17,7 @@ SKILLS = {
     "competitor-research",
     "change-evaluation",
     "backlink-gap",
+    "domain-comparison",
 }
 
 
@@ -48,7 +49,7 @@ def validate():
         "hooks" not in manifest and "apps" not in manifest,
         "Unexpected executable components",
     )
-    endpoint = "https://hypergsc.com/mcp/openai"
+    endpoint = "https://hypergsc.com/mcp"
     server = {"type": "http", "url": endpoint} if claude else {"url": endpoint}
     require(
         read_json(PLUGIN / ".mcp.json") == {"mcpServers": {"hypergsc": server}},
